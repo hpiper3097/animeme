@@ -1,0 +1,104 @@
+
+basic minimax example;
+
+int Max(depth) {
+	bestSoFar = -infinity
+	
+	depth < 1 ? return scorefromWPOV()
+	
+	for(each move in position) {
+		MakeMove;
+		moveScore = Min(depth - 1);
+		TakeMove;
+		if(moveScore > bestSoFar) bestSoFar = moveScore;
+	}
+	return bestSoFar;
+}
+
+int Min(depth) {
+	worstSoFar = infinity;
+	
+	depth < 1 ? return scorefrom WPOV()
+	
+	for(each move in position) {
+		MakeMove;
+		moveScore = Max(depth - 1);
+		TakeMove;
+		if(moveScore < bestSoFar) worstSoFar = moveScore;
+	}
+	return worstSoFar;
+}
+
+negamax example // for zero sum games
+
+int NegaMax(int depth) {
+	bestSoFar = -infinity;
+	
+	depth < 1 / return ScoreFromSidePOV()
+	for(each move in position) {
+		MakeMove;
+		moveScore = -NegaMax(depth - 1);
+		TakeMove;
+		if(moveScore > bestSoFar) bestSoFar = moveScore;
+	}
+	return bestSoFar;
+}
+
+alpha-beta example
+
+int AB(int depth, int alpha, int beta) {
+	MoveScore = -inf
+	depth < 1 ? return ScoreFromSidePOV()
+	
+	for(each move in position) {
+		MakeMove;
+		moveScore = -AB(depth -1, -beta, -alpha);
+		TakeMove;
+		if(moveScore>=beta)
+			return beta;
+		if(moveScore > alpha)
+			alpha = moveScore;
+	}
+	return alpha;
+}
+
+int search(depth) {
+	int currDepth = 1;
+	iterativeDeepen(depth) {
+		alphabeta(depth);
+		currDepth++;
+	}
+}
+
+
+int alphabeta(depth) {
+
+	IsRepeated() return 0;
+	IsInterrupt() { SetQuit(); return 0; }
+	
+	GenMoves();
+	ProbePvMove(); -> Need Hash Table
+	if(have PvMove) OrderPvMove();
+	
+	LoopMoves() {
+		Make();
+		alphabeta(depth - 1);
+		Take();
+		
+		isBetaCut() -> return beta;
+		isAlpha() { note bestMove, increase alpha };
+	}
+	
+	NoLegalMovesMade() { if InCheck -> return Mate; else return 0; }
+	
+	if(Alpha improved) {store PvMove};
+	
+	return alpha;
+}
+
+
+
+
+
+
+
